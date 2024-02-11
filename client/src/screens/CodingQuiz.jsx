@@ -66,7 +66,7 @@ function CodingQuiz() {
     return (
         <div>
             <h1 className='text-5xl'>{title}</h1>
-            <Timer id={currentQuestion} initialTime={10} onTimeUp={()=>{
+            <Timer id={currentQuestion} initialTime={60} onTimeUp={()=>{
                             setCurrentQuestion(currentQuestion+1);
             }}/>
             <div className='flex flex-col bg-slate-100 w-full rounded-xl p-10 items-start'>
