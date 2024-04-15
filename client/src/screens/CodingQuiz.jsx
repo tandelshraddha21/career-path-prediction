@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Options, Timer } from "../components";
 import { useNavigate } from "react-router-dom";
 import useScoreStore from "../zustand/scoreStore";
+import NavigateQuestions from "../components/NavigateQuestions";
 
 function CodingQuiz() {
   const title = "Coding Quiz";
@@ -64,8 +65,8 @@ function CodingQuiz() {
   }
 
   return (
-    <div>
-      <h1 className="text-5xl">{title}</h1>
+    <div className="w-full ">
+      <h1 className="text-5xl mb-4">{title}</h1>
       <Timer
         id={currentQuestion}
         initialTime={600}
@@ -87,12 +88,16 @@ function CodingQuiz() {
         />
         <button
           onClick={checkAnswer}
-          className="bg-sky-500  text-white p-4 pl-8 pr-8 rounded-xl text-xl"
+          className="bg-purple-800  text-white p-4 pl-8 pr-8 mt-5 rounded-xl text-xl"
         >
           {currentQuestion == 9 ? "Finish" : "Next"}
         </button>
       </div>
-      {score}
+      <NavigateQuestions
+        questions={questions}
+        currentQuestion={currentQuestion}
+        setCurrentQuestion={setCurrentQuestion}
+      />
     </div>
   );
 }

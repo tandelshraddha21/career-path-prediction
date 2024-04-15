@@ -119,7 +119,7 @@ const MemoryTest = () => {
       {showNext && (
         <button
           onClick={handleNext}
-          className="bg-blue-700 text-white rounded-md py-2 px-4"
+          className="bg-purple-800 text-white rounded-md py-2 px-4"
         >
           {currentSequence === -1 ? "Start" : "Next"}
         </button>

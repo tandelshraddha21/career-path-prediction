@@ -90,8 +90,13 @@ const interestedCareerOptions = [
 ];
 
 function InformationForm() {
-  const { aptitudeScore, codingScore, writingScore, memoryScore } =
-    useScoreStore();
+  const {
+    aptitudeScore,
+    codingScore,
+    writingScore,
+    memoryScore,
+    certificationCategory,
+  } = useScoreStore();
   console.log(writingScore);
   const [numHackathons, setNumHackathons] = useState(0);
   const [publicSpeakingPoints, setPublicSpeakingPoints] = useState(0);
@@ -112,6 +117,14 @@ function InformationForm() {
   const [companyToSettle, setCompanyToSettle] = useState(0);
   const [interestedCareer, setInterestedCareer] = useState(0);
   const [prediction, setPrediction] = useState(null);
+
+  useEffect(() => {
+    console.log(
+      "certificationCategory: ",
+      certificationOptions.indexOf(certificationCategory)
+    );
+    setCertificationCode(certificationOptions.indexOf(certificationCategory));
+  });
 
   const mapScore = (score) => {
     if (score >= 0 && score <= 3) return [0, "Poor"];
@@ -155,14 +168,16 @@ function InformationForm() {
   };
 
   return (
-    <div className="mb-10">
+    <div className="h-full w-full">
       <p className="text-start mb-2">{`Aptitude Score: ${aptitudeScore}`}</p>
       <p className="text-start mb-2">{`Coding Score: ${codingScore}`}</p>
       <p className="text-start mb-2">{`Writing Score: ${
         mapScore(writingScore)[1]
       }`}</p>
-      <p className="text-start mb-2">{`Memory Score: ${mapScore(memoryScore)[1]}`}</p>
-
+      <p className="text-start mb-2">{`Memory Score: ${
+        mapScore(memoryScore)[1]
+      }`}</p>
+      <p className="text-start mb-2">{`Certification: ${certificationCategory}`}</p>
       <Slider
         className=" mb-3 "
         min={0}
@@ -224,12 +239,12 @@ function InformationForm() {
         setValue={setInterestedBookType}
         options={interestBookTypeOptions}
       />
-      <DropDown
+      {/* <DropDown
         label="Certification"
         value={certificationCode}
         setValue={setCertificationCode}
         options={certificationOptions}
-      />
+      /> */}
       <DropDown
         label="Workshop Attended"
         value={workShopCode}
