@@ -18,7 +18,7 @@ function Certificate() {
       const formData = new FormData();
       formData.append("certificate", certificate);
       formData.append("name", userData.fullName);
-      const response = await fetch("http://127.0.0.1:5000/cert", {
+      const response = await fetch("http://127.0.0.1:5000/check_certificate", {
         method: "POST",
         body: formData,
       });
